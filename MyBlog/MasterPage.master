@@ -1,0 +1,85 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_aweu5n2y" %>
+<%@ Register Src="UserList.ascx" TagName="UserList" TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>北极星博客</title>
+    <link rel="stylesheet" href="images/style.css" type="text/css" media="all" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="outmain">
+            <div id="samheader">
+                <div id="samenu">
+                <a href="default.aspx"><img src="images/top.jpg" style="border:none;"/></a>
+                </div>
+            </div>
+            <br />
+            <div id="page">
+                <div id="wrap">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <div id="sidebar">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderLeft" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <uc1:UserList ID="UserList1" runat="server" />
+                    <div class="sambar">
+                        <h2>
+                            用户登录┊Login
+                        </h2>
+                        <asp:Panel ID="pnlLogin" runat="server" Height="70px">
+                            <table border="0" style="width:100%;">
+                                <tr>
+                                    <td style="width:80px;">
+                                        用户名：</td>
+                                    <td>
+                                        <asp:TextBox ID="txtLoginId" runat="server" CssClass="formfield" Width="100px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtLoginId"
+                                            ValidationGroup="login" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        密 &nbsp; 码：</td>
+                                    <td>
+                                        <asp:TextBox ID="txtLoginPwd" runat="server" CssClass="formfield" Width="100px" TextMode="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtLoginPwd"
+                                            ValidationGroup="login" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:ImageButton ID="imgbtnRegister" runat="server" CausesValidation="false" ImageUrl="~/images/reg.jpg"
+                                            PostBackUrl="~/Register.aspx" />
+                                    </td>
+                                    <td>
+                                        <asp:ImageButton ID="imgbtnLogin" runat="server" Style="position: relative" ValidationGroup="login"
+                                            ImageUrl="~/images/login.jpg" OnClick="imgbtnLogin_Click" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        <asp:Label ID="lblMessage" runat="server" Visible="False" Width="125px" Height="20px"></asp:Label>&nbsp;
+                        <asp:Panel ID="pnLogin" runat="server" Visible="False" Width="193px">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="hlPostArticle" NavigateUrl="~/PostAticle.aspx"
+                                runat="server">发表文章</asp:HyperLink><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="hlArticleManage" NavigateUrl="~/ManageList.aspx"
+                                runat="server">文章管理</asp:HyperLink><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="hlUserDefault" NavigateUrl="~/UserDefault.aspx"
+                                runat="server">浏览博客</asp:HyperLink><br />
+                            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<asp:ImageButton ID="imgbtnExit" runat="server"
+                                ImageUrl="~/images/exitlogin.jpg" Style="position: relative" CausesValidation="false"
+                                OnClick="imgbtnExit_Click" />
+                            &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+                        </asp:Panel>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="current_page_item" id="footer">
+            ©2007 Beijing Aptech Beida Jade Bird Information Technology Co.,Ltd 版权所有
+        </div>
+    </form>
+</body>
+</html>
